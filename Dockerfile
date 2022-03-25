@@ -52,10 +52,10 @@ ENV PYTHONPATH=/usr/local
 EXPOSE 5000
 
 # The actual flask app
-COPY changedetectionio /app/changedetectionio
+COPY mb_changedetectionio /app/mb_changedetectionio
 # The eventlet server wrapper
-COPY changedetection.py /app/changedetection.py
+COPY mn_changedetection.py /app/mb_changedetection.py
 
 WORKDIR /app
 
-CMD [ "python", "./changedetection.py" , "-d", "/datastore"]
+CMD [ "python", "./mb_changedetection.py" , "-d", "/datastore"]
