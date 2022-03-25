@@ -20,7 +20,7 @@ def main():
 
     # On Windows, create and use a default path.
     if os.name == 'nt':
-        datastore_path = os.path.expandvars(r'%APPDATA%\changedetection.io')
+        datastore_path = os.path.expandvars(r'%APPDATA%\mb_changedetection.io')
         os.makedirs(datastore_path, exist_ok=True)
     else:
         # Must be absolute so that send_from_directory doesnt try to make it relative to backend/
