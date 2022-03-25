@@ -18,8 +18,8 @@ from wtforms import (
 from wtforms.fields import html5
 from wtforms.validators import ValidationError
 
-from changedetectionio import content_fetcher
-from changedetectionio.notification import (
+from mb_changedetectionio import content_fetcher
+from mb_changedetectionio.notification import (
     default_notification_body,
     default_notification_format,
     default_notification_title,
@@ -123,7 +123,7 @@ class ValidateContentFetcherIsReady(object):
     def __call__(self, form, field):
         import urllib3.exceptions
 
-        from changedetectionio import content_fetcher
+        from mb_changedetectionio import content_fetcher
 
         # Better would be a radiohandler that keeps a reference to each class
         if field.data is not None:
@@ -139,7 +139,7 @@ class ValidateContentFetcherIsReady(object):
                     'Be sure that the selenium/webdriver runner is running and accessible via network from this container/host.')
                 message += '<br/>' + field.gettext('Did you follow the instructions in the wiki?')
                 message += '<br/><br/>' + field.gettext('WebDriver Host: %s' % (driver_url))
-                message += '<br/><a href="https://github.com/dgtlmoon/changedetection.io/wiki/Fetching-pages-with-WebDriver">Go here for more information</a>'
+                message += '<br/><a href="https://github.com/MouhamedBA/mb_changedetection.io/wiki/Fetching-pages-with-WebDriver">Go here for more information</a>'
                 message += '<br/>'+field.gettext('Content fetcher did not respond properly, unable to use it.\n %s' % (str(e)))
 
                 raise ValidationError(message)
@@ -152,7 +152,7 @@ class ValidateContentFetcherIsReady(object):
 class ValidateNotificationBodyAndTitleWhenURLisSet(object):
     """
        Validates that they entered something in both notification title+body when the URL is set
-       Due to https://github.com/dgtlmoon/changedetection.io/issues/360
+       Due to https://github.com/MouhamedBA/mb_changedetection.io/issues/360
        """
 
     def __init__(self, message=None):
@@ -189,7 +189,7 @@ class ValidateTokensList(object):
         self.message = message
 
     def __call__(self, form, field):
-        from changedetectionio import notification
+        from mb_changedetectionio import notification
         regex = re.compile('{.*?}')
         for p in re.findall(regex, field.data):
             if not p.strip('{}') in notification.valid_tokens:
