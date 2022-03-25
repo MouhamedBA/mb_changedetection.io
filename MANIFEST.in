@@ -1,6 +1,6 @@
-recursive-include changedetectionio/templates *
-recursive-include changedetectionio/static *
-include changedetection.py
+recursive-include mb_changedetectionio/templates *
+recursive-include mb_changedetectionio/static *
+include mb_changedetection.py
 global-exclude *.pyc
 global-exclude node_modules
 global-exclude venv
