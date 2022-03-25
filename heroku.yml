@@ -1,2 +1,2 @@
 run:
-  changedetection: python3 ./changedetection.py -C -d ./datastore -p $PORT
+  mb_changedetection: python3 ./changedetection.py -C -d ./datastore -p $PORT
