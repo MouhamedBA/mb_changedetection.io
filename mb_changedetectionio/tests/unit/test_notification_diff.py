@@ -6,7 +6,7 @@
 import unittest
 import os
 
-from changedetectionio import diff
+from mb_changedetectionio import diff
 
 # mostly
 class TestDiffBuilder(unittest.TestCase):
