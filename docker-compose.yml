@@ -1,7 +1,7 @@
 version: '2'
 services:
     mb_changedetection:
-      image: ghcr.io/dgtlmoon/changedetection.io
+      image: ghcr.io/MouhamedBA/mb_changedetection.io
       container_name: mb_changedetection
       hostname: mb_changedetection
       volumes:
@@ -30,7 +30,7 @@ services:
   #        An exclude list (useful for notification URLs above) can be specified by with
   #      - NO_PROXY="localhost,192.168.0.0/24"
   #
-  #        Base URL of your changedetection.io install (Added to the notification alert)
+  #        Base URL of your mb_changedetection.io install (Added to the notification alert)
   #      - BASE_URL=https://mysite.com
 
   #        Respect proxy_pass type settings, `proxy_set_header Host "localhost";` and `proxy_set_header X-Forwarded-Prefix /app;`
