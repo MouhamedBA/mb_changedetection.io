@@ -3,7 +3,7 @@ name: Build and push containers
 on:
   # Automatically triggered by a testing workflow passing, but this is only checked when it lands in the `master`/default branch
 #  workflow_run:
-#    workflows: ["ChangeDetection.io Test"]
+#    workflows: ["mb_ChangeDetection.io Test"]
 #    branches: [master]
 #    tags: ['0.*']
 #    types: [completed]
@@ -54,9 +54,9 @@ jobs:
 
       - name: Create release metadata
         run: |
-          # COPY'ed by Dockerfile into changedetectionio/ of the image, then read by the server in store.py
-          echo ${{ github.sha }} > changedetectionio/source.txt
-          echo ${{ github.ref }} > changedetectionio/tag.txt
+          # COPY'ed by Dockerfile into mb_changedetectionio/ of the image, then read by the server in store.py
+          echo ${{ github.sha }} > mb_changedetectionio/source.txt
+          echo ${{ github.ref }} > mb_changedetectionio/tag.txt
 
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v1
@@ -95,7 +95,7 @@ jobs:
           file: ./Dockerfile
           push: true
           tags: |
-            ${{ secrets.DOCKER_HUB_USERNAME }}/changedetection.io:latest,ghcr.io/${{ github.repository }}:latest
+            ${{ secrets.DOCKER_HUB_USERNAME }}/mb_changedetection.io:latest,ghcr.io/${{ github.repository }}:latest
           platforms: linux/amd64,linux/arm64,linux/arm/v6,linux/arm/v7
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,dest=/tmp/.buildx-cache
@@ -110,7 +110,7 @@ jobs:
           file: ./Dockerfile
           push: true
           tags: |
-            ${{ secrets.DOCKER_HUB_USERNAME }}/changedetection.io:${{ github.event.release.tag_name }},ghcr.io/dgtlmoon/changedetection.io:${{ github.event.release.tag_name }}
+            ${{ secrets.DOCKER_HUB_USERNAME }}/mb_changedetection.io:${{ github.event.release.tag_name }},ghcr.io/dgtlmoon/changedetection.io:${{ github.event.release.tag_name }}
           platforms: linux/amd64,linux/arm64,linux/arm/v6,linux/arm/v7
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,dest=/tmp/.buildx-cache
