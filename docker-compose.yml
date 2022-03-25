@@ -1,11 +1,11 @@
 version: '2'
 services:
-    changedetection:
+    mb_changedetection:
       image: ghcr.io/dgtlmoon/changedetection.io
-      container_name: changedetection
-      hostname: changedetection
+      container_name: mb_changedetection
+      hostname: mb_changedetection
       volumes:
-        - changedetection-data:/datastore
+        - mb_changedetection-data:/datastore
 
   #    environment:
   #        Default listening port, can also be changed with the -p option
@@ -34,7 +34,7 @@ services:
   #      - BASE_URL=https://mysite.com
 
   #        Respect proxy_pass type settings, `proxy_set_header Host "localhost";` and `proxy_set_header X-Forwarded-Prefix /app;`
-  #        More here https://github.com/dgtlmoon/changedetection.io/wiki/Running-changedetection.io-behind-a-reverse-proxy-sub-directory
+  #        More here https://github.com/MouhamedBA/mb_changedetection.io/wiki/Running-changedetection.io-behind-a-reverse-proxy-sub-directory
   #      - USE_X_SETTINGS=1
 
       # Comment out ports: when using behind a reverse proxy , enable networks: etc.
@@ -61,5 +61,5 @@ services:
 #        restart: unless-stopped
 
 volumes:
-  changedetection-data:
+  mb_changedetection-data:
 
