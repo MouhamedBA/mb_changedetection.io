@@ -26,19 +26,19 @@ def find_version(*file_paths):
 install_requires = open('requirements.txt').readlines()
 
 setup(
-    name='changedetection.io',
-    version=find_version("changedetectionio", "__init__.py"),
+    name='mb_changedetection.io',
+    version=find_version("mb_changedetectionio", "__init__.py"),
     description='Website change detection and monitoring service',
     long_description=open('README-pip.md').read(),
     long_description_content_type='text/markdown',
     keywords='website change monitor for changes notification change detection '
              'alerts tracking website tracker change alert website and monitoring',
-    entry_points={"console_scripts": ["changedetection.io=changedetectionio.changedetection:main"]},
+    entry_points={"console_scripts": ["mb_changedetection.io=mb_changedetectionio.mb_changedetection:main"]},
     zip_safe=True,
-    scripts=["changedetection.py"],
+    scripts=["mb_changedetection.py"],
     author='dgtlmoon',
-    url='https://changedetection.io',
-    packages=['changedetectionio'],
+    url='https://mb_changedetection.io',
+    packages=['mb_changedetectionio'],
     include_package_data=True,
     install_requires=install_requires,
     license="Apache License 2.0",
