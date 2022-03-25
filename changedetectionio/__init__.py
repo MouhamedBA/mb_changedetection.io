@@ -37,7 +37,7 @@ from flask import (
 from flask_login import login_required
 from flask_wtf import CSRFProtect
 
-from changedetectionio import html_tools
+from mb_changedetectionio import html_tools
 
 __version__ = '0.39.11'
 
@@ -296,14 +296,14 @@ def changedetection_app(config=None, datastore_o=None):
         sorted_watches.sort(key=lambda x: x['last_changed'], reverse=True)
 
         fg = FeedGenerator()
-        fg.title('changedetection.io')
+        fg.title('mb_changedetection.io')
         fg.description('Feed description')
-        fg.link(href='https://changedetection.io')
+        fg.link(href='https://mb_changedetection.io')
 
         for watch in sorted_watches:
             if not watch['viewed']:
                 # Re #239 - GUID needs to be individual for each event
-                # @todo In the future make this a configurable link back (see work on BASE_URL https://github.com/dgtlmoon/changedetection.io/pull/228)
+                # @todo In the future make this a configurable link back (see work on BASE_URL https://github.com/MouhamedBA/mb_changedetection.io/pull/228)
                 guid = "{}/{}".format(watch['uuid'], watch['last_changed'])
                 fe = fg.add_entry()
 
@@ -371,7 +371,7 @@ def changedetection_app(config=None, datastore_o=None):
 
         existing_tags = datastore.get_all_tags()
 
-        from changedetectionio import forms
+        from mb_changedetectionio import forms
         form = forms.quickWatchForm(request.form)
 
         output = render_template("watch-overview.html",
@@ -442,7 +442,7 @@ def changedetection_app(config=None, datastore_o=None):
 
         import hashlib
 
-        from changedetectionio import fetch_site_status
+        from mb_changedetectionio import fetch_site_status
 
         # Get the most recent one
         newest_history_key = datastore.get_val(uuid, 'newest_history_key')
@@ -473,7 +473,7 @@ def changedetection_app(config=None, datastore_o=None):
     @app.route("/edit/<string:uuid>", methods=['GET', 'POST'])
     @login_required
     def edit_page(uuid):
-        from changedetectionio import forms
+        from mb_changedetectionio import forms
         form = forms.watchForm(request.form)
 
         # More for testing, possible to return the first/only
@@ -596,7 +596,7 @@ def changedetection_app(config=None, datastore_o=None):
     @login_required
     def settings_page():
 
-        from changedetectionio import content_fetcher, forms
+        from mb_changedetectionio import content_fetcher, forms
 
         form = forms.globalSettingsForm(request.form)
 
@@ -637,7 +637,7 @@ def changedetection_app(config=None, datastore_o=None):
 
             if form.trigger_check.data:
                 if len(form.notification_urls.data):
-                    n_object = {'watch_url': "Test from changedetection.io!",
+                    n_object = {'watch_url': "Test from mb_changedetection.io!",
                                 'notification_urls': form.notification_urls.data,
                                 'notification_title': form.notification_title.data,
                                 'notification_body': form.notification_body.data,
@@ -888,11 +888,11 @@ def changedetection_app(config=None, datastore_o=None):
 
         # Remove any existing backup file, for now we just keep one file
 
-        for previous_backup_filename in Path(datastore_o.datastore_path).rglob('changedetection-backup-*.zip'):
+        for previous_backup_filename in Path(datastore_o.datastore_path).rglob('mb_changedetection-backup-*.zip'):
             os.unlink(previous_backup_filename)
 
         # create a ZipFile object
-        backupname = "changedetection-backup-{}.zip".format(int(time.time()))
+        backupname = "mb_changedetection-backup-{}.zip".format(int(time.time()))
 
         # We only care about UUIDS from the current index file
         uuids = list(datastore.data['watching'].keys())
@@ -963,7 +963,7 @@ def changedetection_app(config=None, datastore_o=None):
     @app.route("/api/add", methods=['POST'])
     @login_required
     def api_watch_add():
-        from changedetectionio import forms
+        from mb_changedetectionio import forms
         form = forms.quickWatchForm(request.form)
 
         if form.validate():
@@ -1064,7 +1064,7 @@ def check_for_new_version():
 
     while not app.config.exit.is_set():
         try:
-            r = requests.post("https://changedetection.io/check-ver.php",
+            r = requests.post("https://mb_changedetection.io/check-ver.php",
                               data={'version': __version__,
                                     'app_guid': datastore.data['app_guid'],
                                     'watch_count': len(datastore.data['watching'])
@@ -1095,7 +1095,7 @@ def notification_runner():
         else:
             # Process notifications
             try:
-                from changedetectionio import notification
+                from mb_changedetectionio import notification
                 notification.process_notification(n_object, datastore)
 
             except Exception as e:
@@ -1117,7 +1117,7 @@ def notification_runner():
 
 # Thread runner to check every minute, look for new watches to feed into the Queue.
 def ticker_thread_check_time_launch_checks():
-    from changedetectionio import update_worker
+    from mb_changedetectionio import update_worker
 
     # Spin up Workers that do the fetching
     # Can be overriden by ENV or use the default settings
