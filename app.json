@@ -1,11 +1,11 @@
 {
-  "name": "ChangeDetection.io",
+  "name": "mb_ChangeDetection.io",
   "description": "The best and simplest self-hosted open source website change detection monitoring and notification service.",
   "keywords": [
-    "changedetection",
+    "mb_changedetection",
     "website monitoring"
   ],
-  "repository": "https://github.com/dgtlmoon/changedetection.io",
+  "repository": "https://github.com/MouhamedBA/mb_changedetection.io",
   "success_url": "/",
   "scripts": {
   },
