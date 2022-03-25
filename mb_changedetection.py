@@ -5,7 +5,7 @@
 # or Docker.
 # Read more https://github.com/dgtlmoon/changedetection.io/wiki
 
-from mb_changedetectionio import changedetection
+from mb_changedetectionio import mb_changedetection
 
 if __name__ == '__main__':
-    changedetection.main()
+    mb_changedetection.main()
