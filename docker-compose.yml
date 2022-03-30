@@ -1,7 +1,7 @@
 version: '2'
 services:
     mb_changedetection:
-      image: ghcr.io/MouhamedBA/mb_changedetection.io
+      image: ghcr.io/mouhamedba/mb_changedetection.io
       container_name: mb_changedetection
       hostname: mb_changedetection
       volumes:
