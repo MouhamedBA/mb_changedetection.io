@@ -1,6 +1,6 @@
 name: PyPi Test and Push tagged release
 
-#Triggers the workflow on push or pull request events
+# Triggers the workflow on push or pull request events
 on:
   workflow_run:
     workflows: ["mb_ChangeDetection.io Test"]
