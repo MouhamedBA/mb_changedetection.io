@@ -37,7 +37,7 @@ jobs:
       - name: Test with pytest
         run: |
           #Each test is totally isolated and performs its own cleanup/reset
-          cd changedetectionio; ./run_all_tests.sh
+          cd mb_changedetectionio; ./run_all_tests.sh
 
       # https://github.com/docker/build-push-action/blob/master/docs/advanced/test-before-push.md ?
       # https://github.com/docker/buildx/issues/59 ? Needs to be one platform?
