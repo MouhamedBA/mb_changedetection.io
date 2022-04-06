@@ -7,7 +7,7 @@
 
 
 # exit when any command fails
-set -e
+#set -e
 
 find tests/test_*py -type f|while read test_name
 do
