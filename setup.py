@@ -36,8 +36,8 @@ setup(
     entry_points={"console_scripts": ["mb_changedetection.io=mb_changedetectionio.mb_changedetection:main"]},
     zip_safe=True,
     scripts=["mb_changedetection.py"],
-    author='dgtlmoon',
-    url='https://mb_changedetection.io',
+    author='dgtlmoon','mba'
+    #url='https://mb_changedetection.io',
     packages=['mb_changedetectionio'],
     include_package_data=True,
     install_requires=install_requires,
