@@ -9,7 +9,7 @@
 # @todo fetch title into json
 # https://distill.io/features
 # proxy per check
-#  - flask_cors, itsdangerous,MarkupSafe
+# - flask_cors, itsdangerous,MarkupSafe
 
 import datetime
 import os
